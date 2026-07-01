@@ -8,8 +8,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
         :root {
-            --bg-color: #fcfcfc;
-            --container-bg: #ffffff;
+            --bg-color: #fdfdfd;
+            --container-bg: rgba(255, 255, 255, 0.96);
             --border-color: #e2e8f0;
             --text-main: #1e293b;
             --text-muted: #64748b;
@@ -26,7 +26,13 @@
 
         body {
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at top right, rgba(161, 29, 38, 0.03), transparent 500px);
+            /* Premium Mathematical Coordinate Grid Overlay */
+            background-image: 
+                radial-gradient(rgba(161, 29, 38, 0.035) 2px, transparent 2px),
+                linear-gradient(to right, rgba(161, 29, 38, 0.012) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(161, 29, 38, 0.012) 1px, transparent 1px);
+            background-size: 32px 32px, 16px 16px, 16px 16px;
+            background-position: center center;
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
@@ -34,6 +40,23 @@
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            position: relative;
+        }
+
+        /* Abstract Mathematical Spiral Graphic Layer */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            opacity: 0.035;
+            pointer-events: none;
+            background: radial-gradient(circle, transparent 20%, var(--accent-red) 75%);
+            mask-image: repeating-conic-gradient(from 0deg, #000 0deg 12deg, transparent 12deg 24deg);
+            -webkit-mask-image: repeating-conic-gradient(from 0deg, #000 0deg 12deg, transparent 12deg 24deg);
+            z-index: 0;
         }
 
         .container {
@@ -43,7 +66,10 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 45px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 10px 30px rgba(161, 29, 38, 0.015), 0 1px 3px rgba(0, 0, 0, 0.01);
+            backdrop-filter: blur(6px);
+            position: relative;
+            z-index: 1;
         }
 
         header {
