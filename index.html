@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aniruddha Mishra</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
         :root {
-            --bg-main: #0f172a;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #38bdf8;
-            --border: #334155;
+            --bg-color: #0b111e;
+            --container-bg: rgba(22, 30, 49, 0.6);
+            --border-color: #23314d;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-glow: #38bdf8;
+            --link-hover: #7dd3fc;
         }
 
         * {
@@ -22,18 +24,26 @@
         }
 
         body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 400px);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
             padding: 60px 20px;
             display: flex;
             justify-content: center;
+            min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 680px;
+            max-width: 720px;
+            background: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
 
         header {
@@ -41,59 +51,65 @@
         }
 
         header h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 4px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         header .subtitle {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
+            font-size: 1.1rem;
+            color: var(--accent-glow);
+            font-weight: 500;
         }
 
-        /* Menu Tabs Navigation */
+        /* Modern Tabs Navigation */
         nav {
             display: flex;
-            gap: 20px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 30px;
-            padding-bottom: 8px;
+            gap: 24px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 35px;
         }
 
         .tab-btn {
             background: none;
             border: none;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-family: inherit;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            padding: 4px 0;
+            padding: 10px 0;
             position: relative;
             transition: color 0.2s ease;
         }
 
         .tab-btn:hover {
-            color: var(--text-primary);
+            color: var(--text-main);
         }
 
         .tab-btn.active {
-            color: var(--accent);
+            color: var(--text-main);
         }
 
         .tab-btn.active::after {
             content: '';
             position: absolute;
-            bottom: -9px;
+            bottom: -1px;
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: var(--accent);
+            background-color: var(--accent-glow);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Content Sections */
+        /* Sections and Layout */
         .tab-content {
             display: none;
+            animation: fadeIn 0.4s ease-out;
         }
 
         .tab-content.active {
@@ -101,66 +117,108 @@
         }
 
         h2 {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            font-size: 0.95rem;
-        }
-
-        /* Simple CV List Layout */
-        .cv-section {
-            margin-bottom: 24px;
-        }
-
-        .cv-section h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .cv-item {
+            margin-bottom: 20px;
+            color: var(--text-main);
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .cv-item .details {
-            color: var(--text-secondary);
-        }
-
-        .cv-item .date {
-            color: var(--text-secondary);
-            font-variant-numeric: tabular-nums;
-            min-width: 90px;
-            text-align: right;
-        }
-
-        /* Clean Contact Links */
-        .contact-links {
-            display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 10px;
         }
 
-        .contact-links a {
-            color: var(--accent);
-            text-decoration: none;
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Sleek Timeline / CV Section */
+        .cv-group {
+            margin-bottom: 35px;
+        }
+
+        .cv-group-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-glow);
+            margin-bottom: 15px;
+        }
+
+        .cv-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .cv-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .cv-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .cv-date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .cv-institution {
             font-size: 0.95rem;
+            color: var(--accent-glow);
+            margin-bottom: 6px;
+        }
+
+        .cv-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Clean Contact Links Block */
+        .contact-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .contact-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-flex;
+            align-items: center;
             width: fit-content;
         }
 
-        .contact-links a:hover {
-            text-decoration: underline;
+        .contact-list a:hover {
+            color: var(--link-hover);
+            transform: translateX(4px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 24px; }
+            .cv-header { flex-direction: column; }
+            .cv-date { margin-top: 2px; }
         }
     </style>
 </head>
@@ -172,13 +230,12 @@
         <div class="subtitle">BS-MS student in Mathematics</div>
     </header>
 
-    <!-- Navigation Menu Options -->
     <nav>
         <button class="tab-btn active" onclick="switchTab('about')">About</button>
         <button class="tab-btn" onclick="switchTab('cv')">Brief CV</button>
     </nav>
 
-    <!-- ABOUT TAB -->
+    <!-- ABOUT SECTION -->
     <div id="about" class="tab-content active">
         <h2>About Me</h2>
         <p>
@@ -186,7 +243,7 @@
         </p>
 
         <h2>Contact</h2>
-        <div class="contact-links">
+        <div class="contact-list">
             <a href="mailto:ms23023@iisermohali.ac.in">ms23023@iisermohali.ac.in</a>
             <a href="mailto:aniruddhamishra26@gmail.com">aniruddhamishra26@gmail.com</a>
             <a href="https://www.linkedin.com/in/aniruddha-mishra-246531282/" target="_blank">LinkedIn</a>
@@ -194,36 +251,62 @@
         </div>
     </div>
 
-    <!-- BRIEF CV TAB -->
+    <!-- CV SECTION -->
     <div id="cv" class="tab-content">
-        <h2>Brief CV</h2>
         
-        <div class="cv-section">
-            <h3>Education</h3>
+        <!-- EDUCATION -->
+        <div class="cv-group">
+            <div class="cv-group-title">Education</div>
             <div class="cv-item">
-                <span class="details"><strong>BS-MS (Mathematics)</strong><br>IISER Mohali</span>
-                <span class="date">2022 — Present</span>
+                <div class="cv-header">
+                    <div class="cv-title">BS-MS Dual Degree (Mathematics Major)</div>
+                    <div class="cv-date">2022 — Present</div>
+                </div>
+                <div class="cv-institution">Indian Institute of Science Education and Research (IISER), Mohali</div>
             </div>
         </div>
 
-        <div class="cv-section">
-            <h3>Academic Interests</h3>
+        <!-- RESEARCH & PROJECTS -->
+        <div class="cv-group">
+            <div class="cv-group-title">Research Experience & Projects</div>
+            
             <div class="cv-item">
-                <span class="details">Algebra, Number Theory, and related structural fields.</span>
+                <div class="cv-header">
+                    <div class="cv-title">Academic Project in Algebraic Number Theory</div>
+                    <div class="cv-date">Recent</div>
+                </div>
+                <div class="cv-institution">Indian Statistical Institute (ISI), Delhi Campus</div>
+                <div class="cv-desc">Focused study on Dedekind's and Dirichlet's theorems under the guidance of Prof. Shanta Laishram.</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Mathematics Apprentice</div>
+                    <div class="cv-date">Recent</div>
+                </div>
+                <div class="cv-institution">Lodha Genius Programme</div>
+                <div class="cv-desc">Investigated deeper concepts including continued fractions, primitive roots, Lifting The Exponent (LTE) lemma, and core arithmetic functions.</div>
             </div>
         </div>
 
-        <!-- Feel free to manually add items here later if you want to expand your CV -->
+        <!-- ACADEMIC INTERESTS -->
+        <div class="cv-group">
+            <div class="cv-group-title">Core Competencies</div>
+            <div class="cv-item" style="border-left: none; padding-left: 0;">
+                <div class="cv-desc" style="color: var(--text-main);">
+                    Abstract Algebra, Algebraic Number Theory, Arithmetic Functions, Advanced Mathematical Analysis.
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <script>
     function switchTab(tabId) {
-        // Remove active class from all contents and buttons
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
-        // Add active class to selected content and button
         document.getElementById(tabId).classList.add('active');
         event.currentTarget.classList.add('active');
     }
