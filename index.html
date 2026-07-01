@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniruddha Mishra | Terminal</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --terminal-bg: #161b22;
+            --primary-color: #58a6ff;
+            --text-color: #c9d1d9;
+            --accent-color: #7ef195;
+            --dim-color: #8b949e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .terminal-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--terminal-bg);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #21262d;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .btn-red { background-color: #f85149; }
+        .btn-yellow { background-color: #f0883e; }
+        .btn-green { background-color: #56d364; }
+
+        .title {
+            margin-left: 20px;
+            font-size: 13px;
+            color: var(--dim-color);
+        }
+
+        .terminal-body {
+            padding: 20px;
+            height: 450px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .ascii-art {
+            color: var(--primary-color);
+            white-space: pre;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .line {
+            margin-bottom: 10px;
+        }
+
+        .prompt {
+            color: var(--accent-color);
+        }
+
+        .command-output {
+            margin-left: 15px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .input-line span {
+            color: var(--accent-color);
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: var(--primary-color);
+            font-family: inherit;
+            font-size: inherit;
+            outline: none;
+            width: 100%;
+        }
+
+        .suggested-cmds {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #1f242c;
+            border-top: 1px solid #30363d;
+        }
+
+        .cmd-btn {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: var(--dim-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .cmd-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="terminal-container">
+    <div class="terminal-header">
+        <div class="buttons">
+            <div class="btn btn-red"></div>
+            <div class="btn btn-yellow"></div>
+            <div class="btn btn-green"></div>
+        </div>
+        <div class="title">aniruddha@iiser-mohali:~</div>
+    </div>
+    
+    <div class="terminal-body" id="terminalBody">
+        <div class="ascii-art">
+  /\  ._  o ._     _ _| _| |_  _ _  
+ /--\ | | | | |_| (_|(_|(_| | |(_(_| 
+            _|                    _| 
+        </div>
+        <div class="line">Welcome to the Math RPG Core. Type <span style="color: var(--primary-color)">help</span> to see available choices.</div>
+    </div>
+
+    <div class="suggested-cmds">
+        <button class="cmd-btn" onclick="executeQuick('help')">help</button>
+        <button class="cmd-btn" onclick="executeQuick('stats')">stats</button>
+        <button class="cmd-btn" onclick="executeQuick('quests')">quests</button>
+        <button class="cmd-btn" onclick="executeQuick('inventory')">inventory</button>
+        <button class="cmd-btn" onclick="executeQuick('contact')">contact</button>
+        <button class="cmd-btn" onclick="executeQuick('clear')">clear</button>
+    </div>
+
+    <div class="terminal-header" style="border-top: 1px solid #30363d; border-bottom: none;">
+        <div class="input-line" style="margin-top: 0; width: 100%;">
+            <span>guest@iiserM:~$</span>
+            <input type="text" id="cmdInput" autofocus autocomplete="off" placeholder="Type a command...">
+        </div>
+    </div>
+</div>
+
+<script>
+    const cmdInput = document.getElementById('cmdInput');
+    const terminalBody = document.getElementById('terminalBody');
+
+    const commands = {
+        help: `Available commands:<br>
+          <span style="color:var(--primary-color)">stats</span>     - Check player levels and attributes<br>
+          <span style="color:var(--primary-color)">quests</span>    - Current academic milestones & focus areas<br>
+          <span style="color:var(--primary-color)">inventory</span> - Core mathematical gear equipped<br>
+          <span style="color:var(--primary-color)">contact</span>   - Reveal dynamic communication nodes<br>
+          <span style="color:var(--primary-color)">clear</span>     - Wipe current buffer clean`,
+        
+        stats: `<strong>--- Character Sheet ---</strong><br>
+          Name: Aniruddha Mishra<br>
+          Class: 4th-Year BS-MS Student<br>
+          Guild: Indian Institute of Science Education and Research (IISER), Mohali<br>
+          Main Attribute: Mathematics<br>
+          INT: 92/100 | LaTeX Casting Speed: Max<br>
+          Specializations: [Algebra, Number Theory]`,
+
+        quests: `<strong>--- Active Quest Log ---</strong><br>
+          [🏆 Main Quest] Complete BS-MS thesis program at IISER Mohali.<br>
+          [⚔️ Field Raid] Penetrating deeper into Abstract Algebra architecture.<br>
+          [🔮 Research Tree] Demystifying modern structures in Number Theory.`,
+
+        inventory: `<strong>--- Equipment Slot Bags ---</strong><br>
+          • 🖋️ Pen of Infinite Proofs (Custom Fountain)<br>
+          • 📓 Grimoire (Overleaf Premium Vault)<br>
+          • ☕ Potion of Focus (Black Coffee +20 INT)`,
+
+        contact: `<strong>--- Communications Link Established ---</strong><br>
+          • Academic Mail: <a href="mailto:ms23023@iisermohali.ac.in">ms23023@iisermohali.ac.in</a><br>
+          • Personal Mail: <a href="mailto:aniruddhamishra26@gmail.com">aniruddhamishra26@gmail.com</a><br>
+          • Professional Core: <a href="https://www.linkedin.com/in/aniruddha-mishra-246531282/" target="_blank">LinkedIn Profile</a><br>
+          • Broadcast Deck: <a href="https://twitter.com/aniruddham025" target="_blank">Twitter/X (@aniruddham025)</a>`
+    };
+
+    cmdInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            const rawVal = this.value;
+            const cleanVal = rawVal.trim().toLowerCase();
+            this.value = '';
+            
+            if(cleanVal) {
+                logCommand(rawVal, cleanVal);
+            }
+        }
+    });
+
+    function logCommand(original, command) {
+        const line = document.createElement('div');
+        line.className = 'line';
+        line.innerHTML = `<span class="prompt">guest@iiserM:~$</span> <span>${original}</span>`;
+        terminalBody.appendChild(line);
+
+        const response = document.createElement('div');
+        response.className = 'command-output';
+
+        if (command === 'clear') {
+            terminalBody.innerHTML = '';
+            return;
+        } else if (commands[command]) {
+            response.innerHTML = commands[command];
+        } else {
+            response.innerHTML = `Command not recognized: <span style="color:#f85149">'${original}'</span>. Type <span style="color:var(--primary-color)">help</span> for options.`;
+        }
+
+        terminalBody.appendChild(response);
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    function executeQuick(cmd) {
+        logCommand(cmd, cmd);
+    }
+</script>
+
+</body>
+</html>
