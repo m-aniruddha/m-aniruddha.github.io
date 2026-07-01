@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniruddha Mishra | Terminal</title>
+    <title>Aniruddha Mishra | Mathematics</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
         :root {
-            --bg-color: #0d1117;
-            --terminal-bg: #161b22;
-            --primary-color: #58a6ff;
-            --text-color: #c9d1d9;
-            --accent-color: #7ef195;
-            --dim-color: #8b949e;
+            --bg-main: #0b0f19;
+            --bg-card: #131a2c;
+            --border-color: #222f47;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
         }
 
         * {
@@ -21,254 +24,202 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
             min-height: 100vh;
         }
 
-        .terminal-container {
+        .portfolio-container {
             width: 100%;
-            max-width: 800px;
-            background-color: var(--terminal-bg);
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            overflow: hidden;
+            max-width: 750px;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        .terminal-header {
-            background-color: #21262d;
-            padding: 10px 15px;
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        header .subtitle {
+            font-size: 1.05rem;
+            color: var(--accent-blue);
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        header .institution {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        section h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #30363d;
+            gap: 10px;
         }
 
-        .buttons {
-            display: flex;
-            gap: 8px;
+        section h2::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--border-color);
         }
 
-        .btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .btn-red { background-color: #f85149; }
-        .btn-yellow { background-color: #f0883e; }
-        .btn-green { background-color: #56d364; }
-
-        .title {
-            margin-left: 20px;
-            font-size: 13px;
-            color: var(--dim-color);
+        p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 20px;
         }
 
-        .terminal-body {
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             padding: 20px;
-            height: 450px;
-            overflow-y: auto;
-            font-size: 14px;
-            line-height: 1.6;
+            transition: all 0.3s ease;
         }
 
-        .ascii-art {
-            color: var(--primary-color);
-            white-space: pre;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 12px;
+        .card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
         }
 
-        .line {
-            margin-bottom: 10px;
+        .card h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 8px;
         }
 
-        .prompt {
-            color: var(--accent-color);
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
         }
 
-        .command-output {
-            margin-left: 15px;
-            margin-bottom: 15px;
-            color: var(--text-color);
+        .contact-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
 
-        .input-line {
+        @media (max-width: 500px) {
+            .contact-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-item a {
             display: flex;
             align-items: center;
-            margin-top: 15px;
-        }
-
-        .input-line span {
-            color: var(--accent-color);
-            margin-right: 10px;
-            white-space: nowrap;
-        }
-
-        input {
-            background: transparent;
-            border: none;
-            color: var(--primary-color);
-            font-family: inherit;
-            font-size: inherit;
-            outline: none;
-            width: 100%;
-        }
-
-        .suggested-cmds {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 10px 20px;
-            background: #1f242c;
-            border-top: 1px solid #30363d;
-        }
-
-        .cmd-btn {
-            background: #21262d;
-            border: 1px solid #30363d;
-            color: var(--dim-color);
-            padding: 4px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 12px;
-            transition: all 0.2s ease;
-        }
-
-        .cmd-btn:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        a {
-            color: var(--primary-color);
+            padding: 12px 16px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
             text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s ease, border-color 0.2s ease;
         }
-        a:hover {
-            text-decoration: underline;
+
+        .contact-item a:hover {
+            background-color: rgba(56, 189, 248, 0.03);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<div class="terminal-container">
-    <div class="terminal-header">
-        <div class="buttons">
-            <div class="btn btn-red"></div>
-            <div class="btn btn-yellow"></div>
-            <div class="btn btn-green"></div>
-        </div>
-        <div class="title">aniruddha@iiser-mohali:~</div>
-    </div>
-    
-    <div class="terminal-body" id="terminalBody">
-        <div class="ascii-art">
-  /\  ._  o ._     _ _| _| |_  _ _  
- /--\ | | | | |_| (_|(_|(_| | |(_(_| 
-            _|                    _| 
-        </div>
-        <div class="line">Welcome to the Math RPG Core. Type <span style="color: var(--primary-color)">help</span> to see available choices.</div>
-    </div>
+<div class="portfolio-container">
+    <header>
+        <h1>Aniruddha Mishra</h1>
+        <div class="subtitle">BS-MS Scholar majoring in Mathematics</div>
+        <div class="institution">Indian Institute of Science Education and Research (IISER), Mohali</div>
+    </header>
 
-    <div class="suggested-cmds">
-        <button class="cmd-btn" onclick="executeQuick('help')">help</button>
-        <button class="cmd-btn" onclick="executeQuick('stats')">stats</button>
-        <button class="cmd-btn" onclick="executeQuick('quests')">quests</button>
-        <button class="cmd-btn" onclick="executeQuick('inventory')">inventory</button>
-        <button class="cmd-btn" onclick="executeQuick('contact')">contact</button>
-        <button class="cmd-btn" onclick="executeQuick('clear')">clear</button>
-    </div>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hello! I am a fourth-year BS-MS student at the Indian Institute of Science Education and Research, Mohali. Guided by a deep curiosity for foundational structures, my academic path centers heavily around mathematics.
+        </p>
+    </section>
 
-    <div class="terminal-header" style="border-top: 1px solid #30363d; border-bottom: none;">
-        <div class="input-line" style="margin-top: 0; width: 100%;">
-            <span>guest@iiserM:~$</span>
-            <input type="text" id="cmdInput" autofocus autocomplete="off" placeholder="Type a command...">
+    <section id="interests">
+        <h2>Research Interests</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <h3>Algebra</h3>
+                <p>Exploring algebraic structures, core properties, and their theoretical frameworks.</p>
+            </div>
+            <div class="card">
+                <h3>Number Theory</h3>
+                <p>Investigating arithmetic properties, analytic techniques, and classical structures.</p>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section id="connect">
+        <h2>Connect & Contact</h2>
+        <ul class="contact-list">
+            <li class="contact-item">
+                <a href="mailto:ms23023@iisermohali.ac.in">📧 Academic Email</a>
+            </li>
+            <li class="contact-item">
+                <a href="mailto:aniruddhamishra26@gmail.com">✉️ Personal Email</a>
+            </li>
+            <li class="contact-item">
+                <a href="https://www.linkedin.com/in/aniruddha-mishra-246531282/" target="_blank">🔗 LinkedIn Profile</a>
+            </li>
+            <li class="contact-item">
+                <a href="https://twitter.com/aniruddham025" target="_blank">🐦 Twitter / X</a>
+            </li>
+        </ul>
+    </section>
 </div>
-
-<script>
-    const cmdInput = document.getElementById('cmdInput');
-    const terminalBody = document.getElementById('terminalBody');
-
-    const commands = {
-        help: `Available commands:<br>
-          <span style="color:var(--primary-color)">stats</span>     - Check player levels and attributes<br>
-          <span style="color:var(--primary-color)">quests</span>    - Current academic milestones & focus areas<br>
-          <span style="color:var(--primary-color)">inventory</span> - Core mathematical gear equipped<br>
-          <span style="color:var(--primary-color)">contact</span>   - Reveal dynamic communication nodes<br>
-          <span style="color:var(--primary-color)">clear</span>     - Wipe current buffer clean`,
-        
-        stats: `<strong>--- Character Sheet ---</strong><br>
-          Name: Aniruddha Mishra<br>
-          Class: 4th-Year BS-MS Student<br>
-          Guild: Indian Institute of Science Education and Research (IISER), Mohali<br>
-          Main Attribute: Mathematics<br>
-          INT: 92/100 | LaTeX Casting Speed: Max<br>
-          Specializations: [Algebra, Number Theory]`,
-
-        quests: `<strong>--- Active Quest Log ---</strong><br>
-          [🏆 Main Quest] Complete BS-MS thesis program at IISER Mohali.<br>
-          [⚔️ Field Raid] Penetrating deeper into Abstract Algebra architecture.<br>
-          [🔮 Research Tree] Demystifying modern structures in Number Theory.`,
-
-        inventory: `<strong>--- Equipment Slot Bags ---</strong><br>
-          • 🖋️ Pen of Infinite Proofs (Custom Fountain)<br>
-          • 📓 Grimoire (Overleaf Premium Vault)<br>
-          • ☕ Potion of Focus (Black Coffee +20 INT)`,
-
-        contact: `<strong>--- Communications Link Established ---</strong><br>
-          • Academic Mail: <a href="mailto:ms23023@iisermohali.ac.in">ms23023@iisermohali.ac.in</a><br>
-          • Personal Mail: <a href="mailto:aniruddhamishra26@gmail.com">aniruddhamishra26@gmail.com</a><br>
-          • Professional Core: <a href="https://www.linkedin.com/in/aniruddha-mishra-246531282/" target="_blank">LinkedIn Profile</a><br>
-          • Broadcast Deck: <a href="https://twitter.com/aniruddham025" target="_blank">Twitter/X (@aniruddham025)</a>`
-    };
-
-    cmdInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            const rawVal = this.value;
-            const cleanVal = rawVal.trim().toLowerCase();
-            this.value = '';
-            
-            if(cleanVal) {
-                logCommand(rawVal, cleanVal);
-            }
-        }
-    });
-
-    function logCommand(original, command) {
-        const line = document.createElement('div');
-        line.className = 'line';
-        line.innerHTML = `<span class="prompt">guest@iiserM:~$</span> <span>${original}</span>`;
-        terminalBody.appendChild(line);
-
-        const response = document.createElement('div');
-        response.className = 'command-output';
-
-        if (command === 'clear') {
-            terminalBody.innerHTML = '';
-            return;
-        } else if (commands[command]) {
-            response.innerHTML = commands[command];
-        } else {
-            response.innerHTML = `Command not recognized: <span style="color:#f85149">'${original}'</span>. Type <span style="color:var(--primary-color)">help</span> for options.`;
-        }
-
-        terminalBody.appendChild(response);
-        terminalBody.scrollTop = terminalBody.scrollHeight;
-    }
-
-    function executeQuick(cmd) {
-        logCommand(cmd, cmd);
-    }
-</script>
 
 </body>
 </html>
