@@ -8,13 +8,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
         :root {
-            --bg-color: #0b111e;
-            --container-bg: rgba(22, 30, 49, 0.6);
-            --border-color: #23314d;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --accent-glow: #38bdf8;
-            --link-hover: #7dd3fc;
+            --bg-color: #fcfcfc;
+            --container-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent-red: #a11d26;
+            --accent-light: #fdf2f2;
+            --link-hover: #b91c1c;
         }
 
         * {
@@ -25,7 +26,7 @@
 
         body {
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 400px);
+            background-image: radial-gradient(circle at top right, rgba(161, 29, 38, 0.03), transparent 500px);
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
@@ -40,37 +41,36 @@
             max-width: 760px;
             background: var(--container-bg);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 40px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 45px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
 
         header {
             margin-bottom: 30px;
+            border-left: 4px solid var(--accent-red);
+            padding-left: 18px;
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 6px;
-            background: linear-gradient(to right, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+            color: var(--text-main);
         }
 
         header .subtitle {
-            font-size: 1.1rem;
-            color: var(--accent-glow);
-            font-weight: 500;
+            font-size: 1.15rem;
+            color: var(--accent-red);
+            font-weight: 600;
         }
 
-        /* Modern Tabs Navigation */
+        /* Tabs Navigation */
         nav {
             display: flex;
-            gap: 24px;
-            border-bottom: 1px solid var(--border-color);
+            gap: 28px;
+            border-bottom: 2px solid var(--border-color);
             margin-bottom: 35px;
         }
 
@@ -79,31 +79,30 @@
             border: none;
             color: var(--text-muted);
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
-            padding: 10px 0;
+            padding: 12px 0;
             position: relative;
             transition: color 0.2s ease;
         }
 
         .tab-btn:hover {
-            color: var(--text-main);
+            color: var(--accent-red);
         }
 
         .tab-btn.active {
-            color: var(--text-main);
+            color: var(--accent-red);
         }
 
         .tab-btn.active::after {
             content: '';
             position: absolute;
-            bottom: -1px;
+            bottom: -2px;
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: var(--accent-glow);
-            box-shadow: 0 0 10px var(--accent-glow);
+            background-color: var(--accent-red);
         }
 
         /* Content Sections */
@@ -118,30 +117,30 @@
 
         h2 {
             font-size: 1.4rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 20px;
             color: var(--text-main);
         }
 
         p {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
             margin-bottom: 30px;
         }
 
-        /* CV Timeline Formatting */
+        /* CV Layout Styling */
         .cv-group {
             margin-bottom: 40px;
         }
 
         .cv-group-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            color: var(--accent-glow);
+            color: var(--accent-red);
             margin-bottom: 20px;
-            border-bottom: 1px dashed var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 6px;
         }
 
@@ -172,24 +171,20 @@
         .cv-date {
             font-size: 0.9rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
             white-space: nowrap;
         }
 
         .cv-sub {
             font-size: 0.95rem;
-            color: var(--accent-glow);
+            color: var(--accent-red);
+            font-weight: 500;
             margin-bottom: 8px;
         }
 
         .cv-desc {
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             color: var(--text-muted);
-        }
-
-        .cv-desc ul {
-            margin-top: 6px;
-            margin-left: 16px;
         }
 
         /* Courses Tags Layout */
@@ -201,15 +196,16 @@
         }
 
         .course-badge {
-            background-color: rgba(35, 49, 77, 0.4);
+            background-color: #f8fafc;
             border: 1px solid var(--border-color);
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-main);
+            font-weight: 500;
         }
 
-        /* Clean Contact Links */
+        /* Contact Links */
         .contact-list {
             display: flex;
             flex-direction: column;
@@ -217,30 +213,33 @@
         }
 
         .contact-list a {
-            color: var(--text-muted);
+            color: var(--text-main);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.05rem;
             transition: color 0.2s ease, transform 0.2s ease;
             display: inline-flex;
             align-items: center;
             width: fit-content;
+            font-weight: 500;
         }
 
         .contact-list a:hover {
             color: var(--link-hover);
             transform: translateX(4px);
+            text-decoration: underline;
         }
 
         a.cert-link {
-            color: var(--accent-glow);
+            color: var(--accent-red);
             text-decoration: none;
+            font-weight: 500;
         }
         a.cert-link:hover {
             text-decoration: underline;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
+            from { opacity: 0; transform: translateY(4px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -383,13 +382,19 @@
             </div>
 
             <div class="cv-item">
-                <div class="cv-title">INSPIRE Awards – MANAK</div>
+                <div class="cv-header">
+                    <div class="cv-title">INSPIRE Awards – MANAK</div>
+                    <div class="cv-date">2019-20 & 2020-21</div>
+                </div>
                 <div class="cv-sub">Department of Science & Technology, Govt. of India</div>
-                <div class="cv-date" style="position:absolute; right:0; top:0;">2019-20 & 2020-21</div>
                 <div class="cv-desc">Selected and recognized under the flagship national innovation architecture evaluating highly original and innovative scientific student frameworks across India.</div>
             </div>
 
-            
+            <div class="cv-item">
+                <div class="cv-title">Head Boy</div>
+                <div class="cv-sub">Student Council, Seth M. R. Jaipuria School</div>
+                <div class="cv-desc">Elected to head student body governance and institutional leadership portfolios.</div>
+            </div>
         </div>
 
         <!-- COURSES -->
@@ -476,7 +481,7 @@
     </div>
 </div>
 
-<script>
+<script {nonce}>
     function switchTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
