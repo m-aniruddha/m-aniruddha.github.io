@@ -37,7 +37,7 @@
 
         .container {
             width: 100%;
-            max-width: 720px;
+            max-width: 760px;
             background: var(--container-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
@@ -106,7 +106,7 @@
             box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Sections and Layout */
+        /* Content Sections */
         .tab-content {
             display: none;
             animation: fadeIn 0.4s ease-out;
@@ -117,13 +117,10 @@
         }
 
         h2 {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 20px;
             color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         p {
@@ -132,25 +129,27 @@
             margin-bottom: 30px;
         }
 
-        /* Sleek Timeline / CV Section */
+        /* CV Timeline Formatting */
         .cv-group {
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .cv-group-title {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             color: var(--accent-glow);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 6px;
         }
 
         .cv-item {
             position: relative;
-            padding-left: 20px;
+            padding-left: 24px;
             border-left: 2px solid var(--border-color);
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
         .cv-item:last-child {
@@ -165,7 +164,7 @@
         }
 
         .cv-title {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-main);
         }
@@ -177,10 +176,10 @@
             white-space: nowrap;
         }
 
-        .cv-institution {
+        .cv-sub {
             font-size: 0.95rem;
             color: var(--accent-glow);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .cv-desc {
@@ -188,10 +187,32 @@
             color: var(--text-muted);
         }
 
-        /* Clean Contact Links Block */
+        .cv-desc ul {
+            margin-top: 6px;
+            margin-left: 16px;
+        }
+
+        /* Courses Tags Layout */
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            line-height: 1.4;
+        }
+
+        .course-badge {
+            background-color: rgba(35, 49, 77, 0.4);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        /* Clean Contact Links */
         .contact-list {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
@@ -210,15 +231,23 @@
             transform: translateX(4px);
         }
 
+        a.cert-link {
+            color: var(--accent-glow);
+            text-decoration: none;
+        }
+        a.cert-link:hover {
+            text-decoration: underline;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
             .container { padding: 24px; }
             .cv-header { flex-direction: column; }
-            .cv-date { margin-top: 2px; }
+            .cv-date { margin-top: 2px; margin-bottom: 4px; }
         }
     </style>
 </head>
@@ -257,45 +286,194 @@
         <!-- EDUCATION -->
         <div class="cv-group">
             <div class="cv-group-title">Education</div>
-            <div class="cv-item">
-                <div class="cv-header">
-                    <div class="cv-title">BS-MS Dual Degree (Mathematics Major)</div>
-                    <div class="cv-date">2022 — Present</div>
-                </div>
-                <div class="cv-institution">Indian Institute of Science Education and Research (IISER), Mohali</div>
-            </div>
-        </div>
-
-        <!-- RESEARCH & PROJECTS -->
-        <div class="cv-group">
-            <div class="cv-group-title">Research Experience & Projects</div>
             
             <div class="cv-item">
                 <div class="cv-header">
-                    <div class="cv-title">Academic Project in Algebraic Number Theory</div>
-                    <div class="cv-date">Recent</div>
+                    <div class="cv-title">Indian Institute of Science Education and Research (IISER), Mohali</div>
+                    <div class="cv-date">2023 — 2028</div>
                 </div>
-                <div class="cv-institution">Indian Statistical Institute (ISI), Delhi Campus</div>
-                <div class="cv-desc">Focused study on Dedekind's and Dirichlet's theorems under the guidance of Prof. Shanta Laishram.</div>
+                <div class="cv-sub">BS-MS Dual Degree</div>
+                <div class="cv-desc">CPI: 9.8 (till sixth semester)</div>
             </div>
 
             <div class="cv-item">
                 <div class="cv-header">
-                    <div class="cv-title">Mathematics Apprentice</div>
-                    <div class="cv-date">Recent</div>
+                    <div class="cv-title">Seth M. R. Jaipuria School</div>
+                    <div class="cv-date">2022 — 2023</div>
                 </div>
-                <div class="cv-institution">Lodha Genius Programme</div>
-                <div class="cv-desc">Investigated deeper concepts including continued fractions, primitive roots, Lifting The Exponent (LTE) lemma, and core arithmetic functions.</div>
+                <div class="cv-sub">Hardoi, Uttar Pradesh</div>
+                <div class="cv-desc">Intermediate</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Seth M. R. Jaipuria School</div>
+                    <div class="cv-date">2020 — 2021</div>
+                </div>
+                <div class="cv-sub">Hardoi, Uttar Pradesh</div>
+                <div class="cv-desc">Matriculation</div>
             </div>
         </div>
 
-        <!-- ACADEMIC INTERESTS -->
+        <!-- EXPERIENCE -->
         <div class="cv-group">
-            <div class="cv-group-title">Core Competencies</div>
-            <div class="cv-item" style="border-left: none; padding-left: 0;">
-                <div class="cv-desc" style="color: var(--text-main);">
-                    Abstract Algebra, Algebraic Number Theory, Arithmetic Functions, Advanced Mathematical Analysis.
+            <div class="cv-group-title">Experience</div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Math Apprentice</div>
+                    <div class="cv-date">May 2026 — June 2026</div>
                 </div>
+                <div class="cv-sub">Lodha Genius - Ashoka University Programme (LG-AUP) 2026</div>
+                <div class="cv-desc">
+                    Served as a teaching assistant for an intensive course in number theory targeted at exceptional 11th-12th grade students from India, taught by Prof. Shanta Laishram (ISI Delhi). Simultaneously attended week-long specialized advanced number theory modules, including an intensive focus on L-functions led by Prof. A. Raghuram.
+                    <br><br>
+                    Concurrently pursuing a summer research project under the supervision of Prof. Shanta Laishram in Algebraic Number Theory, focusing fundamentally on Dirichlet’s unit theorem, class group structures, and class numbers.
+                </div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Summer Intern</div>
+                    <div class="cv-date">May 2025 — July 2025</div>
+                </div>
+                <div class="cv-sub">Indian Institute of Science (IISc), Bangalore</div>
+                <div class="cv-desc">
+                    Completed a comprehensive summer research project titled “Introduction to Algebraic Number Theory” under the guidance of Dr. Soumya Das at the Department of Mathematics. Extensively studied structural frameworks of “Number Fields” by Daniel Marcus. (<a href="#" class="cert-link">Certificate</a>)
+                </div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Summer Intern</div>
+                    <div class="cv-date">May 2024 — June 2024</div>
+                </div>
+                <div class="cv-sub">Indian Statistical Institute (ISI), Bangalore Centre</div>
+                <div class="cv-desc">
+                    Completed a focused summer research module titled “Introduction to Group Theory and Linear Algebra” under the guidance of Dr. Anita Naolekar at the Statistics and Mathematics Unit. Foundational frameworks were referenced heavily from M. Artin’s <i>Algebra</i> and I. N. Herstein’s <i>Topics in Algebra</i>. (<a href="#" class="cert-link">Certificate</a>)
+                </div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Editorial Roles — Manthan Magazine</div>
+                    <div class="cv-date">Apr 2024 — Present</div>
+                </div>
+                <div class="cv-sub">IISER Mohali Student Publication</div>
+                <div class="cv-desc">
+                    Currently serving as a <strong>Senior Editor</strong> (April 2024 – Present). Previously assumed leadership accountability as the <strong>Chief Editor</strong> (November 2024 – October 2025) of Manthan, the central student-run publication profile at IISER Mohali.
+                </div>
+            </div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="cv-group">
+            <div class="cv-group-title">Achievements</div>
+            
+            <div class="cv-item">
+                <div class="cv-title">C.N.R. Rao Foundation Prize</div>
+                <div class="cv-sub">IISER Mohali</div>
+                <div class="cv-desc">Awarded twice for capturing the absolute highest Semester Performance Index (SPI) across both the first and second semesters of the BS-MS program.</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-title">Academic Certificates of Merit</div>
+                <div class="cv-sub">IISER Mohali</div>
+                <div class="cv-desc">Conferred twice for exceptional, top academic milestones (SPI: 10.0) among all active Mathematics majors throughout the fifth and sixth semesters.</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-title">INSPIRE Awards – MANAK</div>
+                <div class="cv-sub">Department of Science & Technology, Govt. of India</div>
+                <div class="cv-date" style="position:absolute; right:0; top:0;">2019-20 & 2020-21</div>
+                <div class="cv-desc">Selected and recognized under the flagship national innovation architecture evaluating highly original and innovative scientific student frameworks across India.</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-title">Head Boy</div>
+                <div class="cv-sub">Student Council, Seth M. R. Jaipuria School</div>
+                <div class="cv-desc">Elected to head student body governance and institutional leadership portfolios.</div>
+            </div>
+        </div>
+
+        <!-- COURSES -->
+        <div class="cv-group">
+            <div class="cv-group-title">Relevant Courses Taken</div>
+            <div class="course-list">
+                <span class="course-badge">Rings and Modules (MTH308)</span>
+                <span class="course-badge">Complex Analysis (MTH305)</span>
+                <span class="course-badge">Lebesgue Measure & Integration (MTH306)</span>
+                <span class="course-badge">Topology (MTH307)</span>
+                <span class="course-badge">Real Analysis (MTH301)</span>
+                <span class="course-badge">Linear Algebra (MTH302)</span>
+                <span class="course-badge">Set Theory and Logic (MTH303)</span>
+                <span class="course-badge">Group Theory (MTH304)</span>
+                <span class="course-badge">Differential & Integral Calculus (MTH201)</span>
+                <span class="course-badge">Elementary Number Theory (MTH202)</span>
+                <span class="course-badge">Sequences and Series (MTH203)</span>
+                <span class="course-badge">Symmetry (MTH204)</span>
+                <span class="course-badge">Analysis in One Variable (MTH205)</span>
+                <span class="course-badge">Ordinary Differential Equations (MTH206)</span>
+                <span class="course-badge">Probability and Statistics (MTH102)</span>
+                <span class="course-badge">Basic Linear Algebra (MTH101)</span>
+                <span class="course-badge">Theory of Computation (IDC204)</span>
+            </div>
+        </div>
+
+        <!-- TEACHING -->
+        <div class="cv-group">
+            <div class="cv-group-title">Teaching Experience</div>
+            
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Help Sessions Lead — Symmetry (MTH204)</div>
+                    <div class="cv-date">Jan 2026 — Apr 2026</div>
+                </div>
+                <div class="cv-sub">IISER Mohali</div>
+                <div class="cv-desc">Conducted specialized core instruction and peer academic problem help sessions structured for second-year math track undergraduate cohorts.</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Teaching Assistant — Number Theory</div>
+                    <div class="cv-date">May 2026 — June 2026</div>
+                </div>
+                <div class="cv-sub">Lodha Genius - Ashoka University Programme (LG-AUP)</div>
+                <div class="cv-desc">Appointed teaching assistant for the Advanced Elementary Number Theory course instructed by Prof. Shanta Laishram (ISI Delhi) for high-potential 11th and 12th graders.</div>
+            </div>
+        </div>
+
+        <!-- CO-SCHOLASTIC -->
+        <div class="cv-group">
+            <div class="cv-group-title">Co-scholastic Achievements</div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Convener — IISER Mohali Quiz Club (IMQC)</div>
+                    <div class="cv-date">2024 — 2026</div>
+                </div>
+                <div class="cv-desc">Currently serving as the official institutional Convener for the 2025-26 operational session. Previously elected and served as Co-convener for the 2024-25 session cycle.</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-title">Active Core Member — Infinity Club</div>
+                <div class="cv-desc">Consistently contribute to organizational core modules within the official Mathematics assembly and student hub of IISER Mohali.</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Chief Editor — Meraki Magazine</div>
+                    <div class="cv-date">First Edition</div>
+                </div>
+                <div class="cv-desc">Headed the collaborative editorial and composition unit of Manthan to direct, compile, and launch the premier edition of Meraki—IISER Mohali's unified academic/science periodical.</div>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-header">
+                    <div class="cv-title">Event Operations Volunteer — Foundation Day</div>
+                    <div class="cv-date">2023 & 2024</div>
+                </div>
+                <div class="cv-desc">Coordinated student logistics and structured live interactive experimental science demonstrations aimed at visiting primary and secondary educational school networks across Chandigarh, Mohali, and Panchkula.</div>
             </div>
         </div>
 
